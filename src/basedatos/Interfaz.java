@@ -256,9 +256,7 @@ public class Interfaz extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        String visualiz ="DORSAL NOMBRE  APELLIDO   DEMARCACION \n-----------------------------------------------------------------\n";
-                
+        String visualiz ="DORSAL NOMBRE  APELLIDO   DEMARCACION \n-----------------------------------------------------------------\n";        
         try {
             while (resul.next()) {
                 visualiz = visualiz +"  "+ resul.getBigDecimal("Dorsal")+"               "+resul.getString("Nombre")+"            "+resul.getString("Apellido")+"          "+resul.getString("Demarcacion")+"\n" ;
