@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,6 +26,7 @@ public class Interfaz extends javax.swing.JFrame {
      */
     public Interfaz() {
         initComponents();
+        visualizar("");
         this.jLabel1.setIcon(new ImageIcon("src\\icono.jpeg"));
     }
 
@@ -51,6 +53,11 @@ public class Interfaz extends javax.swing.JFrame {
         BAdd = new javax.swing.JButton();
         BConsultar = new javax.swing.JButton();
         BConexion = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        BModificar = new javax.swing.JButton();
+        BActualiz = new javax.swing.JButton();
+        BDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("RCCV");
@@ -123,33 +130,80 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
+        jTable1.setForeground(new java.awt.Color(51, 153, 255));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        BModificar.setBackground(new java.awt.Color(255, 255, 255));
+        BModificar.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        BModificar.setForeground(new java.awt.Color(51, 204, 255));
+        BModificar.setText("MODIFICAR");
+        BModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BModificarActionPerformed(evt);
+            }
+        });
+
+        BActualiz.setBackground(new java.awt.Color(255, 255, 255));
+        BActualiz.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        BActualiz.setForeground(new java.awt.Color(51, 204, 255));
+        BActualiz.setText("UPDATE");
+        BActualiz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BActualizActionPerformed(evt);
+            }
+        });
+
+        BDelete.setBackground(new java.awt.Color(255, 255, 255));
+        BDelete.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        BDelete.setForeground(new java.awt.Color(51, 204, 255));
+        BDelete.setText("ELIMINAR");
+        BDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BDeleteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BConexion, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(BConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(BAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabelDorsal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabelNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabelApell, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabelDemar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(TFieldDorsal)
                                 .addComponent(TFieldNombre)
                                 .addComponent(TFieldDemar, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                                 .addComponent(TFieldApell))
-                            .addComponent(BLimpiar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(BConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(BConexion, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(BModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(BLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(BActualiz, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(BDelete, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -174,13 +228,21 @@ public class Interfaz extends javax.swing.JFrame {
                     .addComponent(jLabelDemar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TFieldDemar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(56, 56, 56)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(BLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(BConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BActualiz, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(62, 62, 62)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 820, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 60, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -200,7 +262,36 @@ public class Interfaz extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+    public void visualizar(String valor){
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("DORSAL");
+        model.addColumn("NOMBRE");
+        model.addColumn("APELLIDO");
+        model.addColumn("DEMARCACION");
+        jTable1.setModel(model);
+            Connection con = uhum.conexion();
+            String [] jugadores = new String[4];
+            String sql="";
+            if(valor.equals("")){
+                sql="select * from celpla";
+            }
+            else
+                sql="select * from celpla where dorsal='"+valor+"'";
+        try {
+            java.sql.Statement sta = con.createStatement();
+            ResultSet res = sta.executeQuery(sql);
+            while(res.next()){
+                jugadores[0] = res.getString(1);
+                jugadores[1] = res.getString(2);
+                jugadores[2] = res.getString(3);
+                jugadores[3] = res.getString(4);
+                model.addRow(jugadores);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+    }
     Metodos uhum = new Metodos();
     private void TFieldDorsalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFieldDorsalActionPerformed
         // TODO add your handling code here:
@@ -235,8 +326,12 @@ public class Interfaz extends javax.swing.JFrame {
             if(n>0){
                 JOptionPane.showMessageDialog(this, "Insercion realizada");
             }
+            
             else
                 JOptionPane.showMessageDialog(this, "Error en la insercion");
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.addRow(new Object[]{TFieldDorsal.getText(), TFieldNombre.getText(), TFieldApell.getText(),TFieldDemar.getText()});
+            
         } catch (SQLException ex) {
             Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -272,6 +367,41 @@ public class Interfaz extends javax.swing.JFrame {
     private void BConexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BConexionActionPerformed
         uhum.conexion();
     }//GEN-LAST:event_BConexionActionPerformed
+
+    private void BModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BModificarActionPerformed
+        int fila = jTable1.getSelectedRow();
+        if(fila>=0){
+            TFieldDorsal.setText(jTable1.getValueAt(fila, 0).toString());
+            TFieldNombre.setText(jTable1.getValueAt(fila, 1).toString());
+            TFieldApell.setText(jTable1.getValueAt(fila, 2).toString());
+            TFieldDemar.setText(jTable1.getValueAt(fila, 3).toString());
+        }
+        else
+            JOptionPane.showMessageDialog(this, "Elige una fila");
+    }//GEN-LAST:event_BModificarActionPerformed
+
+    private void BActualizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BActualizActionPerformed
+        try {
+            PreparedStatement prep = uhum.conexion().prepareStatement("update celpla set Nombre='"+TFieldNombre.getText()+"',Apellido='"+TFieldApell.getText()+"',Demarcacion='"+TFieldDemar.getText()+"' where Dorsal='"+TFieldDorsal.getText()+"'");
+            prep.execute();
+            visualizar("");
+        } catch (SQLException ex) {
+            Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_BActualizActionPerformed
+
+    private void BDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BDeleteActionPerformed
+        int filaselecc = jTable1.getSelectedRow();
+        String dorsal=""+jTable1.getValueAt(filaselecc, 0).toString();
+        try {
+            PreparedStatement prep = uhum.conexion().prepareStatement("delete from celpla where Dorsal='"+dorsal+"'");
+            prep.executeUpdate();
+            visualizar("");
+        } catch (SQLException ex) {
+            Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_BDeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -309,10 +439,13 @@ public class Interfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BActualiz;
     private javax.swing.JButton BAdd;
     private javax.swing.JButton BConexion;
     private javax.swing.JButton BConsultar;
+    private javax.swing.JButton BDelete;
     private javax.swing.JButton BLimpiar;
+    private javax.swing.JButton BModificar;
     private javax.swing.JTextField TFieldApell;
     private javax.swing.JTextField TFieldDemar;
     private javax.swing.JTextField TFieldDorsal;
@@ -323,5 +456,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelDorsal;
     private javax.swing.JLabel jLabelNombre;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
